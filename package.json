@@ -1,0 +1,43 @@
+{
+  "name": "generator-legacy-deployment",
+  "version": "0.0.1",
+  "description": "A Yeoman generator for legacy deployment scheme, like SSH based cpanel hosting",
+  "main": "generators/app/index.js",
+  "scripts": {
+    "test": "echo 'Its okay Lah'",
+    "compile": "node node_modules/babel-cli/bin/babel.js src --out-dir generators --copy-files",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aajiwani/generator-legacy-deployment.git"
+  },
+  "keywords": [
+    "legacy",
+    "cpanel",
+    "automation",
+    "deployment",
+    "pipeline",
+    "gitlab",
+    "travis",
+    "ci",
+    "cd"
+  ],
+  "author": "Amir Ali Jiwani <amirali.jiwani89@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aajiwani/generator-legacy-deployment/issues"
+  },
+  "homepage": "https://github.com/aajiwani/generator-legacy-deployment#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-preset-env": "^1.7.0",
+    "jasmine": "^3.3.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "yeoman-generator": "^3.2.0"
+  }
+}
