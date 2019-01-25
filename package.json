@@ -21,7 +21,11 @@
     "gitlab",
     "travis",
     "ci",
-    "cd"
+    "cd",
+    "yeoman-generator"
+  ],
+  "files": [
+    "generators"
   ],
   "author": "Amir Ali Jiwani <amirali.jiwani89@gmail.com>",
   "license": "MIT",
