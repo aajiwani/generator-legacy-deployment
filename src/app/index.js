@@ -18,7 +18,7 @@ export default class LegacyDeploymentGenerator extends Generator {
 
     // Your initialization methods (checking current project state, getting configs, etc)
     initializing() {
-        if (ProjectHelper.projectExists()) {
+        if (ProjectHelper.projectExists(this.destinationRoot())) {
             // Prompt the user on existence of the project
             this.log("There is already an existent deployment setting available on this directory");
             process.exit(1);
