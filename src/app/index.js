@@ -5,6 +5,7 @@ var Generator = require('yeoman-generator');
 import _ from 'lodash';
 // import questions from './questions.js';
 // import localGenerator from './generator';
+import ProjectHelper from "./utils/project_helper";
 
 export default class LegacyDeploymentGenerator extends Generator {
     constructor(args, opts) {
@@ -17,7 +18,12 @@ export default class LegacyDeploymentGenerator extends Generator {
 
     // Your initialization methods (checking current project state, getting configs, etc)
     initializing() {
-
+        if (ProjectHelper.projectExists()) {
+            // Prompt the user on existence of the project
+            this.log("There is already an existent deployment setting available on this directory");
+            process.exit(1);
+            // throw new Error("There is already an existent deployment setting available on this directory");
+        }
     }
 
     // Where you prompt users for options (where you’d call this.prompt())
@@ -26,12 +32,12 @@ export default class LegacyDeploymentGenerator extends Generator {
     }
 
     // Saving configurations and configure the project (creating .editorconfig files and other metadata files)
-    configuring () {
+    configuring() {
 
     }
 
     // If the method name doesn’t match a priority, it will be pushed to this group.
-    default() {
+    default () {
 
     }
 
@@ -77,7 +83,7 @@ export default class LegacyDeploymentGenerator extends Generator {
     }
 
     paths() {
-        this.log( this.destinationRoot() );
+        this.log(this.destinationRoot());
     }
 
     _private_method() {
