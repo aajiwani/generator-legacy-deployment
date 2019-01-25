@@ -11,17 +11,61 @@ export default class LegacyDeploymentGenerator extends Generator {
         super(args, opts);
     }
 
+    priorityName() {
+
+    }
+
+    // Your initialization methods (checking current project state, getting configs, etc)
+    initializing() {
+
+    }
+
+    // Where you prompt users for options (where you’d call this.prompt())
+    prompting() {
+
+    }
+
+    // Saving configurations and configure the project (creating .editorconfig files and other metadata files)
+    configuring () {
+
+    }
+
+    // If the method name doesn’t match a priority, it will be pushed to this group.
+    default() {
+
+    }
+
+    // Where you write the generator specific files (routes, controllers, etc)
+    writing() {
+
+    }
+
+    // Where conflicts are handled (used internally)
+    conflicts() {
+
+    }
+
+    // Where installations are run (npm, bower)
+    install() {
+
+    }
+
+    // Called last, cleanup, say good bye, etc
+    end() {
+
+    }
+
     // prompting() {
-        // return this.prompt(questions)
-        //     .then((answers) => {
-        //         var gen = new localGenerator(this.options.gen_path, answers);
-        //         var logs = gen.startGeneration();
-        //         if (logs.length > 0) {
-        //             for (var i = 0; i < logs.length; i++) {
-        //                 this.log(logs[i]);
-        //             }
-        //         }
-        //     });
+    // return this.prompt(questions)
+    //     .then((answers) => {
+    //         var gen = new localGenerator(this.options.gen_path, answers);
+    //         var logs = gen.startGeneration();
+    //         if (logs.length > 0) {
+    //             for (var i = 0; i < logs.length; i++) {
+    //                 this.log(logs[i]);
+    //             }
+    //         }
+    //     });
     // }
 
     method1() {
@@ -30,5 +74,13 @@ export default class LegacyDeploymentGenerator extends Generator {
 
     method2() {
         this.log('method 2 just ran');
+    }
+
+    paths() {
+        this.log( this.destinationRoot() );
+    }
+
+    _private_method() {
+        console.log('private hey');
     }
 };
