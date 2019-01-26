@@ -1,9 +1,9 @@
 // import Generator from 'yeoman-generator';
-var Generator = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 // import fs from 'fs';
 // import path from 'path';
 import _ from 'lodash';
-// import questions from './questions.js';
+import questions from './questions.js';
 // import localGenerator from './generator';
 import ProjectHelper from "./utils/project_helper";
 
@@ -12,23 +12,27 @@ export default class LegacyDeploymentGenerator extends Generator {
         super(args, opts);
     }
 
-    priorityName() {
-
-    }
-
     // Your initialization methods (checking current project state, getting configs, etc)
     initializing() {
         if (ProjectHelper.projectExists(this.destinationRoot())) {
             // Prompt the user on existence of the project
             this.log("There is already an existent deployment setting available on this directory");
             process.exit(1);
-            // throw new Error("There is already an existent deployment setting available on this directory");
         }
     }
 
     // Where you prompt users for options (where you’d call this.prompt())
     prompting() {
-
+        // return this.prompt(questions)
+        //     .then((answers) => {
+        //         var gen = new localGenerator(this.options.gen_path, answers);
+        //         var logs = gen.startGeneration();
+        //         if (logs.length > 0) {
+        //             for (var i = 0; i < logs.length; i++) {
+        //                 this.log(logs[i]);
+        //             }
+        //         }
+        //     });
     }
 
     // Saving configurations and configure the project (creating .editorconfig files and other metadata files)
