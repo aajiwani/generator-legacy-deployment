@@ -2,16 +2,16 @@
   "name": "generator-legacy-deployment",
   "version": "0.0.1",
   "description": "A Yeoman generator for legacy deployment scheme, like SSH based cpanel hosting",
-  "main": "generators/app/index.js",
-  "scripts": {
-    "test": "echo 'Its okay Lah'",
-    "compile": "node node_modules/babel-cli/bin/babel.js src --out-dir generators --copy-files",
-    "prepublish": "npm run compile"
+  "homepage": "https://github.com/aajiwani/generator-legacy-deployment",
+  "author": {
+    "name": "Amir Ali Jiwani",
+    "email": "amirali.jiwani89@gmail.com",
+    "url": "https://ideasrefactored.wordpress.com/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aajiwani/generator-legacy-deployment.git"
-  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
   "keywords": [
     "legacy",
     "cpanel",
@@ -24,25 +24,60 @@
     "cd",
     "yeoman-generator"
   ],
-  "files": [
-    "generators"
-  ],
-  "author": "Amir Ali Jiwani <amirali.jiwani89@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/aajiwani/generator-legacy-deployment/issues"
-  },
-  "homepage": "https://github.com/aajiwani/generator-legacy-deployment#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-add-module-exports": "^1.0.0",
-    "babel-preset-env": "^1.7.0",
-    "jasmine": "^3.3.1"
+    "yeoman-test": "^1.7.0",
+    "yeoman-assert": "^3.1.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.9.0",
+    "prettier": "^1.15.2",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-config-xo": "^0.25.0",
+    "jest": "^23.5.0"
+  },
+  "engines": {
+    "npm": ">= 4.0.0"
   },
   "dependencies": {
-    "js-yaml": "^3.12.1",
-    "lodash": "^4.17.11",
-    "yeoman-generator": "^3.2.0"
-  }
+    "yeoman-generator": "^2.0.1",
+    "chalk": "^2.1.0",
+    "yosay": "^2.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": "error"
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "jest"
+  },
+  "repository": "git@github.com:aajiwani/generator-legacy-deployment.git",
+  "license": "MIT"
 }
