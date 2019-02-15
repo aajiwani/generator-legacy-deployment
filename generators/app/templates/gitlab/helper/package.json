@@ -1,0 +1,15 @@
+{
+  "name": "gitlab_helper",
+  "version": "0.0.1",
+  "description": "A small helper for gitlab to function well",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Amir Ali Jiwani",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^6.2.2",
+    "js-yaml": "^3.12.1"
+  }
+}
