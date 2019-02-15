@@ -1,0 +1,53 @@
+image: <%= base_image_name %>
+<% if (requires_mysql == true) { %>,
+services:
+  - name: mysql:5.7
+    alias: container_mysql_host
+
+variables:
+  # Configure mysql environment variables (https://hub.docker.com/_/mysql/)
+  MYSQL_DATABASE: container_mysql_database
+  MYSQL_USER: container_mysql_database_user
+  MYSQL_PASSWORD: container_mysql_database_password
+  MYSQL_ROOT_PASSWORD: container_mysql_database_password
+  MYSQL_DB_HOST: container_mysql_host
+<% } %>
+
+stages:
+  - test
+  - staging
+  - deploy
+
+before_script:
+  - export VENDOR_PATH="$(composer global config bin-dir --absolute)"
+  - export PATH="${PATH}:${VENDOR_PATH}"
+  - composer global require phpro/grumphp
+
+code-quality:
+  stage: test
+  script:
+    - grumphp run
+
+unit-tests:
+  stage: test
+  script:
+    - composer install
+    - code_deploy/server/environment_setup/index.sh
+    - vendor/bin/phpunit --coverage-clover "${CI_PROJECT_DIR}/tests/clover.xml" "${CI_PROJECT_DIR}/tests"
+    - php "${CI_PROJECT_DIR}/tests/coverage_test/coverage-checker.php" "${CI_PROJECT_DIR}/tests/clover.xml" ${TEST_PERCENTAGE}
+
+staging-push:
+  stage: staging
+  script:
+    - cd code_deploy/server/deployment && ./index.sh
+    - echo "Pushed successfully on staging server"
+
+remove-branch-deployment:
+  stage: deploy
+  script:
+    - cd code_deploy/server/cleanup && ./index.sh <% if (requires_mysql == true) { %>, 1 : 0 <% } %>
+  only:
+    - merge_requests
+  except:
+    variables:
+      - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(master|staging)/
