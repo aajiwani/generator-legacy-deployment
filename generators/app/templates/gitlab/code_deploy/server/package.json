@@ -1,0 +1,14 @@
+{
+  "name": "runner_deployment_helper",
+  "version": "0.0.1",
+  "description": "A helper to support creating deployment package from runner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Amir Ali Jiwani <amirali.jiwani89@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
+}
