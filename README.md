@@ -1,4 +1,5 @@
 # generator-legacy-deployment [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+
 > A Yeoman generator for legacy deployment scheme, like SSH based cpanel hosting
 
 ## Installation
